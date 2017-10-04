@@ -313,6 +313,11 @@ if (!empty($action)) {
                             'submissionid' => $turnitintooltwosubmission->id
                         ));
 
+                        $DB->insert_record('turnitintooltwo_sub_status', array(
+                            'submissionid' => $turnitintooltwosubmission->id,
+                            'status' => '0'
+                        ));
+
                         $task = new \mod_turnitintooltwo\task\submit_assignment();
                         $task->set_custom_data(array(
                             'userid' => $USER->id,

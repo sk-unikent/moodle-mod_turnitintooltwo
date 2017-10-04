@@ -1210,14 +1210,11 @@ class turnitintooltwo_view {
                                                     'mod_turnitintooltwo')." ".get_string('submittoturnitin', 'turnitintooltwo'));
 
             // Kent - might be processing?
-            foreach ($DB->get_records('task_adhoc', array('component' => 'mod_turnitintooltwo')) as $record) {
-                $json = json_decode($record->customdata);
-                if (isset($json->submissionid) && $json->submissionid == $submission->id) {
-                    $modified = html_writer::tag('span', 'Processing...');
-                }
+            $status = $DB->get_field('turnitintooltwo_sub_status', 'status', ['submissionid' => $submission->id]);
+            if ($status === 0) {
+                $modified = html_writer::tag('span', 'Processing...');
             }
             // Kent.
-
         } else if (empty($submission->submission_objectid)) {
             $rawmodified = 0;
             $modified = "--";

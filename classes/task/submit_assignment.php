@@ -114,8 +114,7 @@ class submit_assignment extends \core\task\adhoc_task
                 'view.php?id='.$cm->id,
                 "Failed to submit '" . $turnitintooltwosubmission->submission_title . "' " . ($tiisubmission['message'] ?: ''),
                 $cm->id,
-                $user->id,
-                array('submissionid' => $data['submissionid'])
+                $user->id
             );
 
             cli_writeln("Finished processing unsuccessful submission: " . $data['submissionid']);
